@@ -1,0 +1,165 @@
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+.toast-slider {
+  height: 100%;
+  width: 500px;
+  background-color: purple;
+  overflow-y: auto;
+  
+  transition: all 1s;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  position: absolute;
+  top: 0;
+  left: 700px;
+}
+
+body {
+  background-color: lightgreen;
+}
+
+.item {
+  transition: all .5s;
+}
+
+.toast {
+  margin-bottom: 20px;
+  width: 225px;
+  border-radius: 12px;
+  background: #fff;
+  padding: 20px 35px 20px 25px;
+  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+
+  position: absolute;
+}
+
+
+  .toast .toast-content {
+      display: flex;
+      align-items: center;
+  }
+
+
+.toast-content i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  min-width: 35px;
+
+  color: #fff;
+  font-size: 20px;
+  border-radius: 50%;
+}
+
+.toast-content i::before{
+  content: '';
+  height: 20px;
+  width: 20px;
+}
+
+.toast .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+.toast .close::before {
+  content: '';
+  display: block;
+  height: 20px;
+  width: 20px;
+  background: url('../resources/xmark-solid.svg') no-repeat center;
+}
+
+
+
+.toast-content .success { 
+  background-color: #19ab1f;
+}
+
+.toast-content .success::before {
+  background: url('../resources/check-solid.svg') no-repeat center;
+}
+
+.toast-content .danger {
+  background-color: #efae07;
+}
+
+.toast-content .danger::before {
+  background: url('../resources/triangle-exclamation-solid.svg') no-repeat center;
+}
+
+.toast-content .info {
+  background-color: #4070f4;
+}
+
+.toast-content .info::before {
+  background: url('../resources/info-solid.svg') no-repeat center;
+}
+
+.toast-content .fail {
+  background-color: #e90303;
+}
+
+.toast-content .fail::before {
+  background: url('../resources/xmark-solid.svg') no-repeat center;
+}
+
+.toast-content .message {
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
+}
+
+.message .text {
+  font-size: 16px;
+  font-weight: 400;
+  color: #666666;
+}
+
+.toast .progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 7px;
+  width: 100%;
+}
+
+  .toast .progress:before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      background-color: red;
+  }
+
+.progress.active:before {
+  animation: progress 25s linear forwards;
+}
+
+
+.toast-slider::-webkit-scrollbar{
+  background-color: transparent;
+}
+
+.toast-slider::-webkit-scrollbar-thumb {
+  background-color: #bcb8c161;
+  border-radius: 10px;
+  max-height: 50px;
+}
+
+@keyframes progress {
+  100% {
+      right: 100%;
+  }
+}
