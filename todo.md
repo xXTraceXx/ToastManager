@@ -1,2 +1,2 @@
-- [ ] optional progressbar and autoclose
+- [x] optional progressbar and autoclose
 - [ ] Fall: Connection Lost => danach Meldung Connection wieder aufgebaut => Connection Lost sollte verschwinden?
