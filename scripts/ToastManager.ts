@@ -1,15 +1,20 @@
 type toastType = 'danger' | 'success' | 'fail' | 'info';
 
+type SliderConfig = {
+    showProgressbar: boolean
+}
+
 class ToastManager{
     _sliderElement: JQuery<HTMLElement>;
+    _config: SliderConfig;
 
-    constructor(sliderID: string){
+    constructor(sliderID: string, config: SliderConfig){
+        this._config = config;
         this.init(sliderID);
     }
 
     init(sliderID: string){
         this._sliderElement = $(`#${sliderID}`);
-        
 
         let hasSliderClass = this._sliderElement.hasClass('toast-slider');
         console.log(hasSliderClass);
@@ -83,12 +88,15 @@ class ToastManager{
         });
         closeIcon.classList.add('close');
     
-        let progressDiv = document.createElement('div');
-        progressDiv.classList.add('progress', 'active');
+        if(this._config.showProgressbar){
+            let progressDiv = document.createElement('div');
+            progressDiv.classList.add('progress', 'active');
+
+            toast.append(progressDiv);
+        }
     
         toast.append(toastContent);
         toast.append(closeIcon);
-        toast.append(progressDiv);
     
         return toast;
     }
