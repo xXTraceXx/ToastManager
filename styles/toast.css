@@ -30,10 +30,10 @@ body {
 
 .toast {
   margin-bottom: 20px;
-  width: 225px;
+  width: 295px;
   border-radius: 12px;
   background: #fff;
-  padding: 20px 35px 20px 25px;
+  padding: 20px 35px 20px 10px;
   box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 
@@ -54,7 +54,6 @@ body {
   height: 35px;
   min-width: 35px;
 
-  color: #fff;
   font-size: 20px;
   border-radius: 50%;
 }
@@ -79,22 +78,28 @@ body {
   background: url('../resources/xmark-solid.svg') no-repeat center;
 }
 
-
-
 .toast-content .success { 
   background-color: #19ab1f;
 }
 
 .toast-content .success::before {
-  background: url('../resources/check-solid.svg') no-repeat center;
+  background: url('../resources/check-solid-white.svg') no-repeat center;
+}
+
+.toast-content .phone::before {
+  background: url('../resources/phone-volume-solid-white.svg') no-repeat center;
+}
+
+.toast-content .phone {
+  background-color: #4070f4;
 }
 
 .toast-content .danger {
-  background-color: #efae07;
+  background-color: #ff9800;
 }
 
 .toast-content .danger::before {
-  background: url('../resources/triangle-exclamation-solid.svg') no-repeat center;
+  background: url('../resources/triangle-exclamation-solid-white.svg') no-repeat center;
 }
 
 .toast-content .info {
@@ -102,7 +107,7 @@ body {
 }
 
 .toast-content .info::before {
-  background: url('../resources/info-solid.svg') no-repeat center;
+  background: url('../resources/info-solid-white.svg') no-repeat center;
 }
 
 .toast-content .fail {
@@ -110,7 +115,11 @@ body {
 }
 
 .toast-content .fail::before {
-  background: url('../resources/xmark-solid.svg') no-repeat center;
+  background: url('../resources/xmark-solid-white.svg') no-repeat center;
+}
+
+.toast-content .retry::before {
+  background: url('../resources/repeat-solid.svg') no-repeat center;
 }
 
 .toast-content .message {
@@ -119,10 +128,41 @@ body {
   margin: 0 20px;
 }
 
+.toast-content button.acceptBtn {
+  background-color: #19ab1f;
+}
+
+.toast-content button.denyBtn {
+  background-color: #e90303;
+}
+
+.toast-content button.denyBtn i {
+  background-color: transparent;
+}
+
+.toast-content button {
+  margin: 2px;
+  border: transparent;
+  border-radius: 12px;
+}
+
+.toast-content button i.success {
+  background-color: transparent;
+}
+
+.toast-content button i.fail {
+  background-color: transparent;
+}
+
+.toast-content button.retryBtn {
+  background-color: #4070f4;
+}
+
 .message .text {
-  font-size: 16px;
-  font-weight: 400;
-  color: #666666;
+  font-size: 15px;
+  font-weight: 600;
+  color: black
+  ;
 }
 
 .toast .progress {

@@ -1,19 +1,19 @@
-type toastType = 'danger' | 'success' | 'fail' | 'info';
+type toastType = 'danger' | 'success' | 'fail' | 'info' | 'phone';
 
 class ToastManager{
     _sliderElement: JQuery<HTMLElement>;
+    _toastConfig: {showProgressbar: boolean};
+    _toastItems: HTMLElement[] = [];
 
-    constructor(sliderID: string){
-        this.init(sliderID);
+    constructor(sliderID: string, toastConfig?: {showProgressbar: boolean}){
+        this.init(sliderID, toastConfig);
     }
 
-    init(sliderID: string){
+    init(sliderID: string, toastConfig?: {showProgressbar}){
         this._sliderElement = $(`#${sliderID}`);
-        
+        this._toastConfig = toastConfig ?? {showProgressbar: true};
 
         let hasSliderClass = this._sliderElement.hasClass('toast-slider');
-        console.log(hasSliderClass);
-        console.log(this._sliderElement);
 
         if(!hasSliderClass){
             throw new Error('Invalid slider dom. Did not found "toast-slider" class');
@@ -44,13 +44,68 @@ class ToastManager{
         this.appendAndMoveItems(failToast);
     }
 
-    private appendAndMoveItems(toast: HTMLElement){
-        this._sliderElement.append(toast).ready(this.moveSliderItems);
+    renderIncomingCallToast(subTitle: string){
+        const callToast = this.createToast('phone', subTitle);
 
-        setTimeout(() => {
-            console.log('tschau miau');
-            $(toast).remove();
-        }, 25000);
+        let toastContent = $(callToast).find('.toast-content');
+        console.log('toastContent');
+        console.log(toastContent);
+
+        let acceptBtn = document.createElement('button');
+        acceptBtn.classList.add('acceptBtn');
+
+        let acceptIcon = document.createElement('i');
+        acceptIcon.classList.add('success');
+
+        acceptBtn.append(acceptIcon);
+
+        let denyBtn = document.createElement('button');
+        denyBtn.classList.add('denyBtn');
+
+        let denyIcon = document.createElement('i');
+        denyIcon.classList.add('fail');
+
+        denyBtn.append(denyIcon);
+
+        toastContent.append(acceptBtn);
+        toastContent.append(denyBtn);
+
+        this.appendAndMoveItems(callToast);
+    }
+
+    renderRetryToast(subTitle: string){
+        const callToast = this.createToast('danger', subTitle);
+
+        let toastContent = $(callToast).find('.toast-content');
+        console.log('toastContent');
+        console.log(toastContent);
+
+        let retryBtn = document.createElement('button');
+        retryBtn.classList.add('retryBtn');
+
+        let retryIcon = document.createElement('i');
+        retryIcon.classList.add('retry');
+
+        retryBtn.append(retryIcon);
+
+        toastContent.append(retryBtn);
+
+        this.appendAndMoveItems(callToast);
+    }
+
+    private appendAndMoveItems(toast: HTMLElement){
+        toast.setAttribute('data-index', `${this._toastItems.length}`);
+
+        this._sliderElement.append(toast).ready(this.moveSliderItemsDown);
+
+        this._toastItems.push(toast);
+
+        if(this._toastConfig.showProgressbar){
+            setTimeout(() => {
+                console.log('tschau miau');
+                $(toast).remove();
+            }, 25000);    
+        }
     }
 
     private createToast(toastType: toastType, subtitle: string): HTMLElement{
@@ -75,25 +130,32 @@ class ToastManager{
         message.append(text);
     
         let closeIcon = document.createElement('i');
-        closeIcon.addEventListener('click', function(){
-            const clickedElement = $(this);
+        closeIcon.addEventListener('click', () => {
+            const clickedElement = $(closeIcon);
+
             const toast = clickedElement.closest('.toast');
+            const index = parseInt(toast.attr('data-index'));
 
             toast.remove();
+
+            this.moveSlideritemsUp(index);
         });
+
         closeIcon.classList.add('close');
     
-        let progressDiv = document.createElement('div');
-        progressDiv.classList.add('progress', 'active');
-    
-        toast.append(toastContent);
         toast.append(closeIcon);
-        toast.append(progressDiv);
+        toast.append(toastContent);
+
+        if(this._toastConfig.showProgressbar){
+            let progressDiv = document.createElement('div');
+            progressDiv.classList.add('progress', 'active');
+            toast.append(progressDiv);
+        }
     
         return toast;
     }
 
-    private moveSliderItems(){
+    private moveSliderItemsDown(){
         let items : NodeListOf<HTMLElement> = document.querySelectorAll('.item');
 
         items.forEach((element) => {
@@ -101,6 +163,23 @@ class ToastManager{
             let newPosition = currentPosition + 100;
             element.style.top = `${newPosition}px`;
         });
+    }
+
+    private moveSlideritemsUp(index: number){
+        console.log('enter move up');
+        console.log(index);
+        let items = this._toastItems.slice(0, index);
+        console.log('items to move')
+        console.log(items);
+
+        items.forEach((element) => {
+            // @ts-ignore
+            let currentPosition = parseInt(element.style.top, 10);
+            let newPosition = currentPosition - 100;
+
+            // @ts-ignore
+            element.style.top = `${newPosition}px`;
+        })
     }
 }
 
