@@ -1,5 +1,3 @@
-type toastType = 'danger' | 'success' | 'fail' | 'info' | 'phone';
-
 class ToastManager{
     _sliderElement: JQuery<HTMLElement>;
     _toastConfig: {showProgressbar: boolean};
@@ -108,7 +106,7 @@ class ToastManager{
         }
     }
 
-    private createToast(toastType: toastType, subtitle: string): HTMLElement{
+    private createToast(toastType: 'danger' | 'success' | 'fail' | 'info' | 'phone', subtitle: string): HTMLElement{
         let toast = document.createElement('toast');
         toast.classList.add('toast', 'item');
         toast.style.top = `${-50}px`;
@@ -166,18 +164,12 @@ class ToastManager{
     }
 
     private moveSlideritemsUp(index: number){
-        console.log('enter move up');
-        console.log(index);
         let items = this._toastItems.slice(0, index);
-        console.log('items to move')
-        console.log(items);
 
-        items.forEach((element) => {
-            // @ts-ignore
+        items.forEach((element) => {            
             let currentPosition = parseInt(element.style.top, 10);
             let newPosition = currentPosition - 100;
 
-            // @ts-ignore
             element.style.top = `${newPosition}px`;
         })
     }

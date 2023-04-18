@@ -8,105 +8,130 @@
   <title>Document</title>
 </head>
 <body>
-  
-  <h1>Success</h1>
-  <div class="toast">
-      <div class="toast-content">
-        <i class="success"></i>
-        <div class="message">
-          <span class="text subtitle">Your changes has been saved</span>
+
+
+
+
+  <h1>Timeboxed dialogs</h1>
+  <div class="dialogList">
+    
+    <div class="item">
+      <h3>Success</h3>
+      <div class="toast" style="position: relative;">
+        <div class="toast-content">
+          <i class="success"></i>
+          <div class="message">
+            <span class="text subtitle">Your changes has been saved</span>
+          </div>
         </div>
-      </div>
-      <i class="close"></i>
-      <div class="progress active"></div>
-  </div>
-
-  <br>
-  <br>
-  <br>
-  <br>
-
-  <h1>Danger</h1>
-  <div class="toast">
-      <div class="toast-content">
-        <i class="danger"></i>
-        <div class="message">
-          <span class="text subtitle">Your changes has been saved</span>
-        </div>
-      </div>
-      <i class="fa-solid fa-xmark close"></i>
-      <div class="progress active"></div>
-  </div>
-
-  <br>
-  <br>
-  <br>
-  <br>
-
-  <h1>Info</h1>
-  <div class="toast">
-      <div class="toast-content">
-        <i class="info"></i>
-        <div class="message">
-          <span class="text subtitle">Your changes has been saved</span>
-        </div>
-      </div>
-      <i class="fa-solid fa-xmark close"></i>
-      <div class="progress active"></div>
-  </div>
-
-  <br>
-  <br>
-  <br>
-  <br>
-
-  <h1>Fail</h1>
-  <div class="toast">
-      <div class="toast-content">
-        <i class="fail"></i>
-        <div class="message">
-          <span class="text subtitle">Your changes has been saved</span>
-        </div>
-      </div>
-      <i class="close"></i>
-      <div class="progress active"></div>
-  </div>
-
-  <br>
-  <br>
-  <br>
-  <br>
-
-  <h1>Accept/Deny</h1>
-  <div class="toast">
-    <i class="close"></i>
-    <div class="toast-content">
-      <i class="phone"></i>
-      <div class="message">
-        <span class="text subtitle">Incoming call</span>
-      </div>
-      <button class="acceptBtn"><i class="success"></i></button>
-      <button class="denyBtn"><i class="fail"></i></button>
+        <i class="close"></i>
+        <div class="progress active"></div>
+      </div>    
     </div>
-    <div class="progress active"></div>
-  </div>
-  
 
-  <br><br><br><br>
-
-  <h1>Retry</h1>
-  <div class="toast">
-    <i class="close"></i>
-    <div class="toast-content">
-      <i class="danger"></i>
-      <div class="message">
-        <span class="text subtitle">Lost Connection</span>
+    <div class="item">
+      <h3>Danger</h3>
+      <div class="toast" style="position: relative;">
+          <div class="toast-content">
+            <i class="danger"></i>
+            <div class="message">
+              <span class="text subtitle">Your changes has been saved</span>
+            </div>
+          </div>
+          <i class="fa-solid fa-xmark close"></i>
+          <div class="progress active"></div>
       </div>
-      <button class="retryBtn">
-        <i class="retry"></i>
-      </button>
     </div>
+
+    <div class="item">
+      <h3>Info</h3>
+      <div class="toast" style="position: relative;">
+          <div class="toast-content">
+            <i class="info"></i>
+            <div class="message">
+              <span class="text subtitle">Your changes has been saved</span>
+            </div>
+          </div>
+          <i class="fa-solid fa-xmark close"></i>
+          <div class="progress active"></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <h3>Fail</h3>
+      <div class="toast" style="position: relative;">
+          <div class="toast-content">
+            <i class="fail"></i>
+            <div class="message">
+              <span class="text subtitle">Your changes has been saved</span>
+            </div>
+          </div>
+          <i class="close"></i>
+          <div class="progress active"></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <h3>Accept/Deny</h3>
+      <div class="toast" style="position: relative;">
+        <i class="close"></i>
+        <div class="toast-content">
+          <i class="phone"></i>
+          <div class="message">
+            <span class="text subtitle">Incoming call</span>
+          </div>
+          <button class="acceptBtn"><i class="success"></i></button>
+          <button class="denyBtn"><i class="fail"></i></button>
+        </div>
+        <div class="progress active"></div>
+      </div>
+    </div>
+    
   </div>
+
+  <h1>Unboxed dialogs</h1>
+  <div class="dialogList">
+
+    <div class="item">
+      <h3>Retry</h3>
+      <div class="toast" style="position: relative;">
+        <i class="close"></i>
+        <div class="toast-content">
+          <i class="danger"></i>
+          <div class="message">
+            <span class="text subtitle">Lost Connection</span>
+          </div>
+          <button class="retryBtn">
+            <i class="retry"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <h3>Don't show again</h3>
+      <div class="toast" style="position: relative;">
+        <i class="close"></i>
+        <div class="toast-content">
+          <i class="danger"></i>
+          <div class="message">
+            <span class="text subtitle">This will close your meeting!</span>
+          </div>
+          <button class="acceptBtn"><i class="success"></i></button>
+          <button class="denyBtn"><i class="fail"></i></button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  
 
 </body>
+<style>
+  .dialogList {
+    display: flex;
+    gap: 15px;
+  }
+</style>
 </html>
