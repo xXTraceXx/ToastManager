@@ -13,7 +13,25 @@
   
   <div id="slider" class="toast-slider"></div>
 
-  <button id="addToast">Create Notification</button>
-
+  <div class="actionOptions">
+    <button id="infoBtn">Render Info Toast</button>
+    <button id="dangerBtn">Render Danger Toast</button>
+    <button id="successBtn">Render Success Toast</button>
+    <button id="failBtn">Render Fail Toast</button>
+    <button id="incomBtn">Render Incoming Toast</button>
+    <button id="retryBtn">Render Retry Toast</button>
+    <button id="showAgain">Render ShowAgain Toast</button>
+    <button id="clear">Clear</button>
+  </div>
 </body>
+<style>
+  .actionOptions {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .actionOptions button {
+    width: 120px;
+  }
+</style>
 </html>
